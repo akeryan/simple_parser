@@ -7,24 +7,19 @@
 #include "Scanner.h"
 #include "Node.h"
 #include "Parser.h"
-
-#define MAX_LINE_LENGTH 2024
-static char buffer[MAX_LINE_LENGTH];
-
-bool read_next_line(char *buffer, size_t max_length);
+#include "libft.h"
 
 void visit(const Node *node, size_t spaces);
-
 void indent(size_t n_spaces);
 
 int main() {
-	while (read_next_line(buffer, MAX_LINE_LENGTH)) {
-		CharItr itr = CharItr_value(buffer, strlen(buffer));
-		Scanner scanner = Scanner_value(itr);
-		Node *node = parse(&scanner);
-		visit(node, 0);
-		Node_drop(node);
-	}
+	char *line;
+	line = get_next_line(0);
+	CharItr itr = CharItr_value(line, strlen(line));
+	Scanner scanner = Scanner_value(itr);
+	Node *node = parse(&scanner);
+	visit(node, 0);
+	Node_drop(node);
 }
 
 void visit(const Node *node, size_t spaces)

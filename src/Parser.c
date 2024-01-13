@@ -1,10 +1,11 @@
 #include "Parser.h"
 #include "Token.h"
+#include "Parser.h"
 
-static Node* parse_pair(Scanner *scanner);
-static Node* parse_char(Scanner *scanner);
+static Node *parse_pair(Scanner *scanner);
+static Node *parse_char(Scanner *scanner);
 
-Node* parse(Scanner *scanner)
+Node *parse(Scanner *scanner)
 {
 	Token next = Scanner_peek(scanner);
 	switch (next.type) {
@@ -17,13 +18,13 @@ Node* parse(Scanner *scanner)
 	}
 }
 
-static Node* parse_char(Scanner *scanner)
+static Node *parse_char(Scanner *scanner)
 {
 	Token next = Scanner_next(scanner);
 	return CharNode_new(next.lexeme);
 }
 
-static Node* parse_pair(Scanner *scanner)
+static Node *parse_pair(Scanner *scanner)
 {
 	Token next = Scanner_next(scanner);
 	Node *left = parse(scanner); 

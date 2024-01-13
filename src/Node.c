@@ -27,3 +27,10 @@ Node* ErrorNode_new(const char *msg)
 	return node;
 }
 
+void *Node_drop(Node *self)
+{
+	free(self);
+	self = NULL;
+	return (self);
+}
+
