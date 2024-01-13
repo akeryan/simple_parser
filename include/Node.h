@@ -7,14 +7,14 @@ typedef enum NodeType {
 	PAIR_NODE = 1
 } NodeType;
 
+typedef struct Node Node;
+typedef char CharValue;
+typedef const char* ErrorValue;
+
 typedef struct PairValue {
 	Node *left;
 	Node *right;
 } PairValue;
-
-typedef char CharValue;
-
-typedef const char* ErrorValue;
 
 typedef union {
 	PairValue pair;

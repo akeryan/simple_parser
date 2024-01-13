@@ -49,7 +49,7 @@ void visit(const Node *node, size_t spaces)
 
 void indent(size_t spaces)
 {
-	int i = 0;
+	size_t i = 0;
 	
 	while (i++ < spaces)
 		putchar(' ');

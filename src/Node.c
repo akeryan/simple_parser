@@ -1,19 +1,18 @@
 #include <stdlib.h>
 
 #include "Node.h"
-#include "Guards.h"
 
 Node* CharNode_new(char c)
 {
-	Node* node = OOM_GUARD(malloc(sizeof(Node)), _FILE_, _LINE_);
+	Node* node = malloc(sizeof(Node));
 	node->type = CHAR_NODE;
-	node->data_value = c;
+	node->data.value = c;
 	return node;
 };
 
 Node* PairNode_new(Node *left, Node *right)
 {
-	Node* node = OOM_GUARD(malloc(sizeof(Node)), _FILE_, _LINE_);
+	Node* node = malloc(sizeof(Node));
 	node->type = PAIR_NODE;
 	node->data.pair.left = left;
 	node->data.pair.right = right;
@@ -22,7 +21,7 @@ Node* PairNode_new(Node *left, Node *right)
 
 Node* ErrorNode_new(const char *msg)
 {
-	Node* node = OOM_GUARD(malloc(sizeof(Node)), _FILE_, _LINE_);
+	Node* node = malloc(sizeof(Node));
 	node->type = ERROR_NODE;
 	node->data.error = msg;
 	return node;
