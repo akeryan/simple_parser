@@ -9,7 +9,7 @@ SRC_DIR = src
 LIBFT_DIR = libft
 BUILD_DIR = build
 
-SRC_FILES = Main.c Node.c Parser.c CharItr.c
+SRC_FILES = Main.c Node.c Parser.c CharItr.c Scanner.c
 HDR_FILES = CharItr.h Node.h Parser.h Scanner.h Token.h
 
 all: $(NAME)
@@ -19,7 +19,7 @@ OBJ_FILES = $(patsubst %.c, %.o, $(SRC_FILES))
 $(NAME): submodules_init_update libft_add $(OBJ_FILES) 
 	$(CC) $(FLAGS) $(LINKS) -L$(LIBFT_DIR) -lft $(OBJ_FILES) -o $@  
 	
-%.o: $(SRC_DIR)/%.c $(HDR_FILES)
+%.o: $(SRC_DIR)/%.c 
 	$(CC) $(FLAGS) $(LINKS) -c $< -o $@ 
 
 libft_add:
